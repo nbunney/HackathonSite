@@ -5,10 +5,14 @@ gem 'rails', '~>4.2'
 gem 'pg' # Postgres
 gem 'puma' # Server
 
+# Major Utilities
 gem 'devise' # User Registration
 gem 'omniauth' # Social Login
 gem 'pundit' # Authorization
 gem 'paperclip' # File attachments
+
+# Minor Utilities
+gem 'active_link_to'
 
 # Template Stuff
 gem 'slim-rails'
