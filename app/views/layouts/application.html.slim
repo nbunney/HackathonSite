@@ -8,4 +8,6 @@ head
 body
   p.notice= notice
   p.alert= alert
+  = render 'header'
   == yield
+  = render 'footer'
