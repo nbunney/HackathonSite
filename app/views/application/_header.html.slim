@@ -6,15 +6,20 @@ nav.navbar.navbar-default.navbar-fixed-top
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand href="/" Brand
+      a.navbar-brand href="/"= image_tag('logo-white.png')
 
     div.collapse.navbar-collapse#main-menu
       ul.nav.navbar-nav
-        - with_options wrap_tag: :li do |o|
-          = o.active_link_to 'Home', '/', active: :exclusive
-          = o.active_link_to 'About', '/about'
-          = o.active_link_to 'Sponsors', '/sponsors'
-          = o.active_link_to 'Prizes', '/prizes'
-          = o.active_link_to 'Teams', '/teams'
-          = o.active_link_to 'Judges', '/judges'
-          = o.active_link_to 'Signup', new_user_registration_path
+        li= link_to 'Home', '/'
+        li= link_to 'About', '/about'
+        - if @primary_event
+          li= link_to 'Sponsors', event_sponsorships_url(@primary_event)
+          li= link_to 'Prizes', event_prizes_path(@primary_event)
+          li= link_to 'Teams', event_teams_path(@primary_event)
+          / No judged events yet — Gen 5
+          /li= link_to 'Judges', '/judges'
+        - if user_signed_in?
+          li= link_to user_path(current_user) do
+            = current_user.real_name
+        - else
+          li= link_to 'Register', new_user_registration_path

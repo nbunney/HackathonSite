@@ -10,9 +10,12 @@ gem 'devise' # User Registration
 gem 'omniauth' # Social Login
 gem 'pundit' # Authorization
 gem 'paperclip' # File attachments
+gem 'geocoder' # Geocoding
+gem 'friendly_id' # Slugs
 
 # Minor Utilities
 gem 'active_link_to'
+gem 'bootstrap_form'
 
 # Template Stuff
 gem 'slim-rails'
@@ -36,6 +39,7 @@ group :development, :test do
   gem 'pry-rails' # Better Console
   gem 'spring' # Faster CLI
   gem 'rspec-rails' # Specs > Tests
+  gem 'annotate' # Schema annotations inside model-related files
 
   # Guard handles responding to filesystem events
   gem 'guard'

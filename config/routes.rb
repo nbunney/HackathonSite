@@ -1,12 +1,20 @@
 Rails.application.routes.draw do
-	# First Created -> Highest Priority
+  # First Created -> Highest Priority
   # See `bin/rake routes`
 
-	root to: "home#index"
+  root to: "home#index"
 
-  devise_for :users
+  get '/about' => 'documents#about'
 
-	resources :hackathons do
-    resources :events
-	end
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
+
+  resources :users
+
+  resources :events do
+    resources :sponsorships
+    resources :prizes
+    resources :teams
+  end
 end

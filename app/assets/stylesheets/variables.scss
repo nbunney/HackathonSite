@@ -1,0 +1,26 @@
+// Palette
+$orange: #FE563B;
+$dark-gray: hsl(0, 0%, 20%);
+$light-gray: hsl(0, 0%, 90%);
+
+// Bootstrap Variables
+// Typography
+$font-family-sans-serif: 'Lato', Helvetica, Arial, sans-serif;
+$headings-font-family: 'Josefin Sans', Verdana, Tahoma, sans-serif;
+$font-size-base: 16px;
+// Border Radii
+$border-radius-base: 0px;
+$border-radius-large: 0px;
+$border-radius-small: 0px;
+// colors
+$body-bg: $light-gray;
+$navbar-default-bg: $dark-gray;
+$brand-primary: $orange;
+$navbar-default-color: $light-gray;
+$navbar-default-link-color: $navbar-default-color;
+$navbar-default-link-hover-color: lighten($navbar-default-color, 5%);
+$navbar-default-link-active-bg: transparent;
+$navbar-default-link-active-color: $navbar-default-color;
+$navbar-default-toggle-hover-bg: transparent;
+// sizing
+$navbar-height: 75px;

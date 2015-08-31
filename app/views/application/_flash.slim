@@ -1,0 +1,4 @@
+-flash.each do |key, value|
+  -key = 'danger' if key == 'alert'
+  -key = 'warning' if key == 'notice'
+  div class='alert alert-#{key}'= value

@@ -1,1 +1,10 @@
-Test
+-content_for(:containerless)
+  .top-image
+    .inner
+      = image_tag('logo-white.png')
+  .recent-events
+    -if @next_event
+      = @next_event.name
+    -if @prev_event
+      = @prev_event.name
+    = image_tag('modesto-arch.jpg')

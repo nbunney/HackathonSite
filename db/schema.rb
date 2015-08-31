@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150827050832) do
+ActiveRecord::Schema.define(version: 20150831060654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "companies", force: :cascade do |t|
+    t.string   "name",                           null: false
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+    t.text     "description",       default: "", null: false
+    t.string   "contact",                        null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
 
   create_table "events", force: :cascade do |t|
     t.string   "name",                    null: false
@@ -26,19 +38,64 @@ ActiveRecord::Schema.define(version: 20150827050832) do
     t.datetime "updated_at",              null: false
   end
 
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "locations", force: :cascade do |t|
+    t.float    "latitude",                 null: false
+    t.float    "longitude",                null: false
+    t.string   "address",                  null: false
+    t.string   "sub_address", default: "", null: false
+    t.string   "name",                     null: false
+    t.text     "info",        default: "", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  create_table "sponsorship_tiers", force: :cascade do |t|
+    t.integer  "event_id"
+    t.integer  "price",                             null: false
+    t.string   "name",                              null: false
+    t.string   "color",      limit: 6
+    t.text     "details",              default: "", null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
+
+  add_index "sponsorship_tiers", ["event_id"], name: "index_sponsorship_tiers_on_event_id", using: :btree
+
+  create_table "sponsorships", force: :cascade do |t|
+    t.integer  "sponsorship_tier_id", null: false
+    t.integer  "company_id",          null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "sponsorships", ["company_id"], name: "index_sponsorships_on_company_id", using: :btree
+  add_index "sponsorships", ["sponsorship_tier_id"], name: "index_sponsorships_on_sponsorship_tier_id", using: :btree
+
   create_table "users", force: :cascade do |t|
-    t.string   "name"
     t.text     "about"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.string   "email",                              null: false
-    t.string   "encrypted_password",                 null: false
+    t.string   "email",                                  null: false
+    t.string   "encrypted_password",                     null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0, null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -47,12 +104,17 @@ ActiveRecord::Schema.define(version: 20150827050832) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "real_name",                              null: false
+    t.boolean  "admin",                  default: false, null: false
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "sponsorship_tiers", "events"
+  add_foreign_key "sponsorships", "companies"
+  add_foreign_key "sponsorships", "sponsorship_tiers"
 end

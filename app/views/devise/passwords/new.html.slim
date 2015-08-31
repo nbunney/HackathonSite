@@ -1,0 +1,18 @@
+-content_for(:containerless) do
+  .container.form-page
+    .row
+      .col-md-6.col-md-offset-3
+        = bootstrap_form_for(resource, as: resource_name,
+                                       url: password_path(resource_name),
+                                       html: { method: :post },
+                                       layout: :horizontal) do |f|
+          .row: .col-sm-offset-2.col-sm-10: h2 Reset Password
+          = render 'flash'
+          .input-group
+            = f.email_field :email, autofocus: true,
+                                    append: f.submit('Reset',
+                                                     class: 'btn btn-primary')
+          .row: .col-sm-offset-2.col-sm-10.devise-links
+            span= link_to 'Sign In', new_session_path(resource_name)
+            span= link_to 'Register', new_registration_path(resource_name)
+            span= link_to 'Resend Confirmation', new_confirmation_path(resource_name)
