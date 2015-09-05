@@ -1,0 +1,10 @@
+h2 Sponsors
+-@sponsorship_tiers.each do |tier|
+  div style="background-color: ##{tier.color}"
+    h3= tier.name
+    p= tier.details
+    ul
+      -tier.companies.each do |co|
+        li
+          =image_tag(co.logo)
+          h4= co.name

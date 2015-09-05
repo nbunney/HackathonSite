@@ -3,7 +3,6 @@
 # Table name: users
 #
 #  id                     :integer          not null, primary key
-#  username               :string           not null
 #  about                  :text
 #  avatar_file_name       :string
 #  avatar_content_type    :string
@@ -27,6 +26,7 @@
 #  updated_at             :datetime         not null
 #  real_name              :string           not null
 #  admin                  :boolean          default("false"), not null
+#  slug                   :string           not null
 #
 
 require 'rails_helper'

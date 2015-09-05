@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150831060654) do
+ActiveRecord::Schema.define(version: 20150905080234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,14 +29,23 @@ ActiveRecord::Schema.define(version: 20150831060654) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.string   "name",                    null: false
+    t.string   "name",                           null: false
     t.date     "date"
     t.text     "description"
-    t.integer  "event_type",  default: 0, null: false
-    t.integer  "status",      default: 0, null: false
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "event_type",         default: 0, null: false
+    t.integer  "status",             default: 0, null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "slug",                           null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "location_id"
   end
+
+  add_index "events", ["location_id"], name: "index_events_on_location_id", using: :btree
+  add_index "events", ["slug"], name: "index_events_on_slug", unique: true, using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -62,6 +71,18 @@ ActiveRecord::Schema.define(version: 20150831060654) do
     t.datetime "updated_at",               null: false
   end
 
+  create_table "participants", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "team_id"
+    t.integer  "event_id",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "participants", ["event_id"], name: "index_participants_on_event_id", using: :btree
+  add_index "participants", ["team_id"], name: "index_participants_on_team_id", using: :btree
+  add_index "participants", ["user_id"], name: "index_participants_on_user_id", using: :btree
+
   create_table "sponsorship_tiers", force: :cascade do |t|
     t.integer  "event_id"
     t.integer  "price",                             null: false
@@ -83,6 +104,28 @@ ActiveRecord::Schema.define(version: 20150831060654) do
 
   add_index "sponsorships", ["company_id"], name: "index_sponsorships_on_company_id", using: :btree
   add_index "sponsorships", ["sponsorship_tier_id"], name: "index_sponsorships_on_sponsorship_tier_id", using: :btree
+
+  create_table "team_invites", force: :cascade do |t|
+    t.integer  "team_id",                          null: false
+    t.string   "email"
+    t.string   "acceptance_token",                 null: false
+    t.integer  "user_id"
+    t.boolean  "accepted",         default: false, null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  add_index "team_invites", ["team_id"], name: "index_team_invites_on_team_id", using: :btree
+  add_index "team_invites", ["user_id"], name: "index_team_invites_on_user_id", using: :btree
+
+  create_table "teams", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.integer  "event_id",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "teams", ["event_id"], name: "index_teams_on_event_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.text     "about"
@@ -108,13 +151,22 @@ ActiveRecord::Schema.define(version: 20150831060654) do
     t.datetime "updated_at",                             null: false
     t.string   "real_name",                              null: false
     t.boolean  "admin",                  default: false, null: false
+    t.string   "slug",                                   null: false
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["slug"], name: "index_users_on_slug", unique: true, using: :btree
 
+  add_foreign_key "events", "locations"
+  add_foreign_key "participants", "events"
+  add_foreign_key "participants", "teams"
+  add_foreign_key "participants", "users"
   add_foreign_key "sponsorship_tiers", "events"
   add_foreign_key "sponsorships", "companies"
   add_foreign_key "sponsorships", "sponsorship_tiers"
+  add_foreign_key "team_invites", "teams"
+  add_foreign_key "team_invites", "users"
+  add_foreign_key "teams", "events"
 end

@@ -1,0 +1,7 @@
+=render 'admin_buttons'
+= render 'flash'
+.hero-image style="background-image: url('#{@event.image}')"
+  .inner
+    h2= @event.name
+= @event.location.address
+| This is a test

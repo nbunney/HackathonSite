@@ -1,6 +1,7 @@
 Devise.setup do |config|
   require 'devise/orm/active_record'
 
+  config.mailer = 'DeviseMailer'
   config.mailer_sender = 'welcome@valleyhackathon.com'
   config.case_insensitive_keys = [:email]
   config.strip_whitespace_keys = [:email]

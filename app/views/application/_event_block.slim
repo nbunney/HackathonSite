@@ -1,0 +1,7 @@
+.hackathon-event style="background-image: url('#{event.image}')"
+  .inner
+    h2
+      = event.name
+      - if subtitle
+        small< subtitle
+    p= event.description

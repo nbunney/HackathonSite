@@ -1,0 +1,4 @@
+-if policy(@event).edit?
+  -admin_button 'Edit', edit_event_path(@event)
+-if policy(@event).destroy?
+  -admin_button 'Delete', event_path(@event), method: 'DELETE'

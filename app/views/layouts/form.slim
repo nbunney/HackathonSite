@@ -1,0 +1,6 @@
+-content_for :content
+  .container.form-page
+    = render 'admin_panel'
+    .row: .col-md-6.col-md-offset-3
+      = yield
+= render template: 'layouts/base'

@@ -14,4 +14,6 @@
 
 class SponsorshipTier < ActiveRecord::Base
   belongs_to :event
+  has_many :sponsorships
+  has_many :companies, through: :sponsorships
 end

@@ -1,0 +1,6 @@
+-if content_for? :admin_buttons
+  nav.navbar.admin-navbar
+    div.container
+      span.rank Administrator
+      ul.nav.navbar-nav
+        = yield :admin_buttons

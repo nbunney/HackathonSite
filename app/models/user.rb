@@ -3,7 +3,6 @@
 # Table name: users
 #
 #  id                     :integer          not null, primary key
-#  username               :string           not null
 #  about                  :text
 #  avatar_file_name       :string
 #  avatar_content_type    :string
@@ -27,9 +26,13 @@
 #  updated_at             :datetime         not null
 #  real_name              :string           not null
 #  admin                  :boolean          default("false"), not null
+#  slug                   :string           not null
 #
 
 class User < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :real_name, :use => :slugged
+
   has_attached_file :avatar,
     styles: { medium: '300x300#', thumb: '100x100#' },
     default_url: '/images/:style/missing.png'
