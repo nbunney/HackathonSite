@@ -1,0 +1,15 @@
+.hero-image {
+  @include dotty-overlay;
+
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  width: calc(100% + 30px);
+  margin: -15px;
+  margin-bottom: 1em;
+  height: 400px;
+  color: white;
+}
+.admin-navbar + .hero-image {
+  margin-top: -1em;
+}

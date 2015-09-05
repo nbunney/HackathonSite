@@ -2,7 +2,10 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 @import 'font-awesome';
-@import 'theme';
+@import 'base';
+@import 'mixins';
 
-@import 'home';
-@import 'registrations';
+@import 'layout/home';
+@import 'layout/form-page';
+@import 'module/admin_bar';
+@import 'module/hero-image';

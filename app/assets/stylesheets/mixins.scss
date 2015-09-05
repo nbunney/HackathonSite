@@ -1,0 +1,33 @@
+@mixin dotty-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  &::after {
+    height: 100%;
+    width: 100%;
+    content: ' ';
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    opacity: 0.3;
+    background: image-url('dot-overlay.png') repeat left top hsla(0, 0%, 0%, 0.5);
+    transition: .2s opacity ease-in-out;
+  }
+  .inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    text-align: center;
+  }
+}
+@mixin dotty-with-hover {
+  @include dotty-overlay;
+
+  &:hover::after {
+    opacity: 0.2;
+  }
+}
+

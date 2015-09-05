@@ -1,0 +1,61 @@
+.home {
+  /* Navbar */
+  .navbar-brand {
+    display: none;
+  }
+  .navbar {
+    background-color: transparent;
+    border-color: hsla(0, 0%, 90%, 0.2);
+  }
+  @media (min-width: $screen-sm-min) {
+    .navbar-collapse {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  /* Hero Unit */
+  .top-image {
+    @include dotty-overlay;
+
+    background-image: image-url('hackathon.jpg');
+    background-size: cover;
+    background-position: top center;
+    height: calc(100vh - 100px);
+    width: 100vw;
+
+    img {
+      max-width: 70%
+    }
+  }
+  /* Displayed Events */
+  .recent-events {
+    @include make-row;
+
+    margin: 0;
+  }
+  .hackathon-event {
+    @include dotty-with-hover;
+    @include make-sm-column(6);
+
+    background-size: cover;
+    background-position: center;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 300px;
+    color: white;
+
+    &::after {
+      opacity: 0.8;
+    }
+    &.modesto {
+      background-image: image-url('modesto-arch.jpg');
+    }
+    &.turlock {
+      background-image: url('http://opticosdesign.com/wp-content/uploads/2013/12/P1050310-4.jpg');
+    }
+  }
+  .footer {
+    display: none;
+  }
+}
