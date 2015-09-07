@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
+  get '/docs/:doc' => 'documents#show'
+  get '/rules/:type' => 'documents#rules'
   get '/about' => 'documents#about'
 
   devise_for :users, controllers: {
