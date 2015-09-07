@@ -1,0 +1,55 @@
+(function ($) {
+  function LocationCard(coords, name, address) {
+    // Build card
+    let card = $('<div class="card place-card">');
+
+    // Build info pane
+    let formattedAddress = address.replace(',', '<br />');
+    let desc = $('<div class="place-info">').appendTo(card);
+    desc.append(`<div class="place-name">${name}</div>`);
+    desc.append(`<div class="place-address">${formattedAddress}</div>`);
+
+    // Build Navigation
+    let navigate = $('<div class="place-navigate">').appendTo(card);
+    let navigationLink = $('<a target="_blank" class="btn btn-primary">').appendTo(navigate);
+    navigationLink.append('Directions');
+
+    let coordsStr = coords.join(',');
+    let navigationUrl = 'https://maps.google.com/maps';
+    navigationUrl += `?ll=${coordsStr}`;
+    navigationUrl += `&z=15`;
+    navigationUrl += `&daddr=${escape(address)}@${coordsStr}`;
+    navigationLink.attr('href', navigationUrl);
+
+    return card[0];
+  }
+
+  $.fn.mapify = function mapify () {
+    if (!window.google) return false;
+    let Maps = window.google.maps;
+
+    this.each(function () {
+      let [lat, lng] = this.dataset.coords.split(',')
+                                          .map((s) => parseFloat(s, 10));
+      let name = this.dataset.name,
+          address = this.dataset.address;
+
+      let map = new Maps.Map(this, {
+        center: {lat, lng},
+        zoom: 17,
+        mapTypeControl: false,
+      });
+      let card = LocationCard([lat, lng], name, address);
+      map.controls[Maps.ControlPosition.TOP_LEFT].push(card);
+
+      let marker = new Maps.Marker({
+        map,
+        position: {lat, lng},
+        icon: "<%= asset_url('maps-poi.png') %>"
+      });
+    });
+  };
+  $(document).on('ready', () => {
+    $('.map').mapify();
+  });
+}(jQuery));

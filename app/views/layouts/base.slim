@@ -33,9 +33,13 @@ html
 
     = stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Lato:700,400|Josefin+Sans:600'
     = stylesheet_link_tag :application, media: 'all'
-    = javascript_include_tag :application
     = csrf_meta_tags
-  body class=controller.controller_name
+  body class="l-#{controller.controller_name} #{controller.controller_name}"
     = render 'header'
     = yield :content
     = render 'footer'
+
+    / Javascript at the bottom
+    = javascript_include_tag :application
+    -if content_for? :head
+      = yield :head
