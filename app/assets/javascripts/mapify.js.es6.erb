@@ -35,6 +35,7 @@
           address = this.dataset.address;
 
       let map = new Maps.Map(this, {
+        scrollwheel: false,
         center: {lat, lng},
         zoom: 17,
         mapTypeControl: false,
