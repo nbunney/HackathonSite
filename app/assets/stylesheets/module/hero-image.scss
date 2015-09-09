@@ -5,11 +5,11 @@
   background-position: center;
   width: 100%;
   width: calc(100% + 30px);
-  margin: -15px;
-  margin-bottom: 1em;
+  margin: 0 -15px;
   height: 400px;
   color: white;
-}
-.admin-navbar + .hero-image {
-  margin-top: -1em;
+
+  h2 {
+    font-size: 70px;
+  }
 }

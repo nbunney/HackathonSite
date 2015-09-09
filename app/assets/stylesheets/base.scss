@@ -49,10 +49,24 @@
   text-transform: uppercase;
   margin-top: 0.2em;
 }
+input[type=color] {
+  padding: 0;
+
+  &::-webkit-color-swatch-wrapper {
+    padding: 0;
+    margin: 0;
+  }
+}
+.input-group-addon {
+  font-family: $headings-font-family;
+  text-transform: uppercase;
+  padding-top: 8px;
+  padding-top: calc(5px + .2em);
+  border-width: 2px;
+}
 
 .btn {
   border: 0;
-  border-radius: 0;
   font-family: $headings-font-family;
   text-transform: uppercase;
   padding-top: 8px;

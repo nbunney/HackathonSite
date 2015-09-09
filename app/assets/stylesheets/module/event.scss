@@ -1,8 +1,19 @@
-body.events {
-  .map {
-    float: left;
-    height: 350px;
-    width: calc(50% + 15px);
-    margin: -15px;
+.l-events .map {
+  height: 350px;
+}
+.event-stats {
+  display: flex;
+  align-items: center;
+  height: 150px;
+  color: $light-gray;
+  background-color: $orange;
+  text-align: center;
+  font-family: 'Josefin Sans';
+  text-transform: uppercase;
+
+  .text {
+    margin-top: 15px;
+    display: block;
   }
 }
+
