@@ -31,6 +31,8 @@ class Event < ActiveRecord::Base
     size: { less_than: 20.megabytes }
 
   belongs_to :location
+  has_many :participants
+  has_many :teams
   has_many :sponsorship_tiers
   has_many :sponsorships, through: :sponsorship_tiers
 
