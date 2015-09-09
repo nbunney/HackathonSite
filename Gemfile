@@ -12,6 +12,8 @@ gem 'pundit' # Authorization
 gem 'paperclip' # File attachments
 gem 'geocoder' # Geocoding
 gem 'friendly_id' # Slugs
+gem 'rails_admin' # Lazy halfassed admin panel
+gem 'counter_culture' # Advanced counter caches
 
 # Minor Utilities
 gem 'bootstrap_form'
