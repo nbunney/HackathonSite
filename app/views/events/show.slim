@@ -6,6 +6,34 @@
 .hero-image style="background-image: url('#{@event.image}')"
   .inner
     h2= @event.name
--loc = @event.location
--if loc
-  .map data-coords=loc.coords data-name=loc.name data-address=loc.address
+    a.btn.btn-primary Register
+.row.event-stats
+  .col-sm-3
+    =fa_icon 'building 3x'
+    div.text
+      => @event.sponsorships.count
+      | Sponsors
+  .col-sm-3
+    =fa_icon 'user 3x'
+    div.text
+      => @event.participants.count
+      | Participants
+  .col-sm-3
+    =fa_icon 'users 3x'
+    div.text
+      => @event.teams.count
+      | Teams
+  .col-sm-3
+    =fa_icon 'trophy 3x'
+    div.text $1000
+      | in Prizes
+.row
+  -loc = @event.location
+  -if loc
+    .map.col-xs-12 data-coords=loc.coords data-name=loc.name data-address=loc.address
+.row
+  .col-sm-6
+    h2 Sponsors
+    ul
+      -@event.sponsorship_tiers.each do |tier|
+        li=tier.name
