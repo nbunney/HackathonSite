@@ -5,6 +5,7 @@ Devise.setup do |config|
   config.mailer_sender = 'welcome@valleyhackathon.com'
   config.case_insensitive_keys = [:email]
   config.strip_whitespace_keys = [:email]
+  config.secret_key = ENV['DEVISE_SECRET']
 
   # It will change confirmation, password recovery and other workflows
   # to behave the same regardless if the e-mail provided was right or wrong.
