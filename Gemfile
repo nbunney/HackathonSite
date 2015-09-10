@@ -35,6 +35,13 @@ gem 'font-awesome-rails'
 gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'turbolinks'
+gem 'react-rails'
+
+# Proxy to Bower
+source 'https://rails-assets.org' do
+  gem 'rails-assets-es6-promise'
+  gem 'rails-assets-fetch'
+end
 
 # Documentation Generator
 gem 'sdoc', group: :doc
