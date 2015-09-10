@@ -1,34 +1,59 @@
 .navbar {
   font-family: $headings-font-family;
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 16px;
+  border: none;
 }
 .navbar-nav {
   float: right;
+  width: 100%;
+  text-align: center;
+
+  @media (min-width: $screen-md-min) {
+    width: auto;
+    font-size: 14px;
+  }
+
+  // HACK: we can't reset margin to the bootstrap default above a point
+  // So we ignore mobile-first on this
+  @media (max-width: $screen-sm-min) {
+    margin: 0;
+  }
 }
 .navbar-brand {
   padding: 10px;
-  height: 75px;
+  height: $navbar-height;
 
   img {
     max-height: 55px;
   }
 }
 .navbar-fixed-top .navbar-collapse {
-  max-height: calc(100vh - 75px);
+  border: none;
+  max-height: none;
+  height: calc(100vh - $navbar-height);
 }
 .navbar-toggle {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+.navbar-default .navbar-toggle {
+  background-color: $orange;
+  border: 0;
+}
 .navbar-default .navbar-nav > li > a {
   line-height: 20px;
-  padding-top: 30px;
-  padding-bottom: 25px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   transition: .15s color;
+
+  @media (min-width: $screen-sm-min) {
+    padding-top: 30px;
+    padding-bottom: 25px;
+  }
 }
 .navbar-fixed-top + .container {
-  margin-top: 75px;
+  margin-top: $navbar-height;
   background-color: #FFF;
   min-height: calc(100vh - 235px);
   padding-bottom: 15px;
