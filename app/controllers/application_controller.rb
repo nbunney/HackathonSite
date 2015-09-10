@@ -2,9 +2,15 @@ class ApplicationController < ActionController::Base
   include Pundit
 
   protect_from_forgery with: :exception
-  before_action :include_pertinent_events
+  before_action :include_pertinent_events, :enable_mini_profiler
 
   protected
+
+  def enable_mini_profiler
+    if current_user && current_user.admin?
+      Rack::MiniProfiler.authorize_request
+    end
+  end
 
   def include_pertinent_events
     @future_events = Event.after.by_date.limit(4)
