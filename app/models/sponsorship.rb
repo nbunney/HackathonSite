@@ -10,6 +10,9 @@
 #
 
 class Sponsorship < ActiveRecord::Base
+  # Keep count of sponsors on Event
+  counter_culture [:sponsorship_tier, :event]
+
   belongs_to :sponsorship_tier
   belongs_to :company
 

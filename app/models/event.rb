@@ -37,9 +37,9 @@ class Event < ActiveRecord::Base
     size: { less_than: 20.megabytes }
 
   belongs_to :location
-  has_many :participants
-  has_many :teams
-  has_many :sponsorship_tiers
+  has_many :participants, dependent: :destroy
+  has_many :teams, dependent: :destroy
+  has_many :sponsorship_tiers, dependent: :destroy
   has_many :sponsorships, through: :sponsorship_tiers
 
   default_scope ->{ eager_load(:location) }
