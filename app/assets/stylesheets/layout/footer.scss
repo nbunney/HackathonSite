@@ -1,7 +1,8 @@
 .l-footer {
   color: darken($light-gray, 40%);
-  height: 160px;
+  min-height: 160px;
   background-color: $dark-gray;
+  padding-bottom: 20px;
 
   .event-inline .date {
     font-family: $headings-font-family;
@@ -9,6 +10,8 @@
     width: 50px;
     display: inline-block;
     font-size: 13px;
+    text-align: right;
+    margin-right: 5px;
   }
   ul,
   li {
@@ -24,9 +27,8 @@
   a {
     color: darken($light-gray, 20%);
   }
-  ul.horizontal {
+  ul.horizontal > li {
     margin-top: 30px;
-    display: flex;
   }
   ul.vertical {
     text-align: left;
@@ -36,7 +38,7 @@
     }
   }
   .copyright {
-    align-self: center;
+    text-align: center;
   }
   p {
     margin: 0;

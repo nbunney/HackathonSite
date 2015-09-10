@@ -1,14 +1,14 @@
 .l-footer
   .container
     ul.horizontal
-      li.col-sm-3
+      li.col-sm-4.col-md-3
         h3 Rules
         ul.vertical
           li: a href="/docs/code-of-conduct" Code Of Conduct
           li: a href="/docs/terms-of-service" Terms of Service
           li: a href="/docs/privacy-policy" Privacy Policy
           li: a href="/docs/rules/full" Rules
-      li.col-sm-3
+      li.col-sm-4.col-md-3
         h3 Recent Events
         ul.vertical
           -@past_events.each do |e|
@@ -16,7 +16,7 @@
               span.event-inline
                 span.date= e.date.strftime('%b %-d')
                 = link_to(e.name, e)
-      li.col-sm-3
+      li.col-sm-4.col-md-3
         h3 Future Events
         ul.vertical
           -@future_events.each do |e|
@@ -24,7 +24,7 @@
               span.event-inline
                 span.date= e.date.strftime('%b %-d')
                 = link_to(e.name, e)
-      li.col-sm-3.copyright
+      li.col-sm-12.col-md-3.copyright
         p &copy; 2015 ValleyHackathon.com
         p
           | Website by
