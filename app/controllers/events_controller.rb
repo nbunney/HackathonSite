@@ -54,7 +54,9 @@ class EventsController < ApplicationController
   def permittance
     # HACK: this was a bad idea
     params[:event][:event_type] = params[:event][:event_type].to_i
+    params[:event][:status] = params[:event][:status].to_i
     params.require(:event)
-          .permit(:name, :event_type, :description, :date, :image, :location_id)
+          .permit(:name, :event_type, :description, :date, :image, :status,
+                  :location_id)
   end
 end

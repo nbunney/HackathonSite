@@ -6,6 +6,7 @@
   .row: .col-sm-offset-3.col-sm-9: h2 #{@action} an event
   = render 'flash'
   .field= f.text_field :name, autofocus: true
+  .field= f.select :status, Event.statuses.map { |k, v| [k, v] }
   .field= f.select :event_type, Event.event_types.map { |k, v| [k, v] }
   .field= f.text_field :description
   .field= f.date_field :date
