@@ -8,25 +8,21 @@
     h2= @event.name
     a.btn.btn-primary Register
 .row.event-stats
-  .col-sm-3
+  .col-xs-6.col-sm-3.stats-block
     =fa_icon 'building 3x'
     div.text
-      => @event.sponsorships.count
-      | Sponsors
-  .col-sm-3
+      = pluralize(@event.sponsorships.count, 'Sponsor')
+  .col-xs-6.col-sm-3.stats-block
     =fa_icon 'user 3x'
     div.text
-      => @event.participants.count
-      | Participants
-  .col-sm-3
+      = pluralize(@event.participants.count, 'Participant')
+  .col-xs-6.col-sm-3.stats-block
     =fa_icon 'users 3x'
     div.text
-      => @event.teams.count
-      | Teams
-  .col-sm-3
+      = pluralize(@event.teams.count, 'Team')
+  .col-xs-6.col-sm-3.stats-block
     =fa_icon 'trophy 3x'
-    div.text $1000
-      | in Prizes
+    div.text $1000 in Prizes
 .row
   -loc = @event.location
   -if loc

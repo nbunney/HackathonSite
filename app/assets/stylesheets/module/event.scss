@@ -2,15 +2,19 @@
   height: 350px;
 }
 .event-stats {
-  display: flex;
-  align-items: center;
-  height: 150px;
   color: $light-gray;
   background-color: $orange;
   text-align: center;
   font-family: 'Josefin Sans';
   text-transform: uppercase;
 
+  .stats-block {
+    display: flex;
+    min-height: 150px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
   .text {
     margin-top: 15px;
     display: block;
