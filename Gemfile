@@ -34,11 +34,13 @@ gem 'uglifier' # Compress JS
 gem 'font-awesome-rails'
 gem 'bootstrap-sass'
 gem 'jquery-rails'
+gem 'turbolinks'
 
 # Documentation Generator
 gem 'sdoc', group: :doc
 
 group :development, :test do
+  gem 'rack-mini-profiler' # Profile the app
   gem 'pry-rails' # Better Console
   gem 'spring' # Faster CLI
   gem 'rspec-rails' # Specs > Tests
