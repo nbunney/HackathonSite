@@ -24,7 +24,13 @@ class Event < ActiveRecord::Base
   enum event_type: %i[mini normal]
   enum status: %i[open closed]
 
-  has_attached_file :image
+  has_attached_file :image, styles: {
+      display: '2340x800#',
+    },
+    convert_options: {
+      display: '-quality 50 -strip'
+    },
+    processors: [:auto_orient, :thumbnail]
 
   validates_attachment :image,
     content_type: { content_type: %w[image/jpeg image/gif image/png] },
