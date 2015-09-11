@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
 
   before_action :include_pertinent_events, :enable_mini_profiler
 
+  def not_found!
+    raise ActionController::RoutingError.new('Not Found')
+  end 
+
   protected
 
   def xhr?

@@ -5,14 +5,13 @@ class DocumentsController < ApplicationController
   def about; end
 
   def show
-    # TODO: return a 404
-    return unless params[:doc].in? ALLOWED_DOCUMENTS
+    ALLOWED_DOCUMENTS.include?(params[:doc]) or not_found!
 
     render params[:doc]
   end
 
   def rules
-    return unless params[:type].in? ALLOWED_RULESETS
+    ALLOWED_RULESETS.include?(params[:type]) or not_found!
 
     render "rules/#{params[:type]}"
   end
