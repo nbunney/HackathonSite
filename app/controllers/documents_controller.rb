@@ -7,6 +7,8 @@ class DocumentsController < ApplicationController
   def show
     ALLOWED_DOCUMENTS.include?(params[:doc]) or not_found!
 
+    @contact = "me@plejeck.com"
+
     render params[:doc]
   end
 
