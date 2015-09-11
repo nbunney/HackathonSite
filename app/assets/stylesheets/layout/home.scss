@@ -24,8 +24,12 @@
     height: calc(100vh - 100px);
     width: 100vw;
 
+    .top-image .alert {
+      max-width: 300px;
+      margin: 20px auto;
+    }
     img {
-      max-width: 70%
+      max-width: 70%;
     }
   }
   /* Displayed Events */

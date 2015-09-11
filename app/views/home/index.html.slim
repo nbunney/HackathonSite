@@ -1,5 +1,6 @@
 .top-image
   .inner
+    = render 'flash'
     = image_tag('logo-white.png')
 .recent-events
   = render 'event_block', event: @next_event, subtitle: 'Next'
