@@ -21,5 +21,8 @@ nav.navbar.navbar-default.navbar-fixed-top
         - if user_signed_in?
           li= link_to user_path(current_user) do
             = current_user.real_name
+          li.sign-out= link_to 'Sign Out', destroy_user_session_path, method: 'delete'
         - else
-          li= link_to 'Register', new_user_registration_path
+          li.register= link_to 'Sign In', new_user_session_path
+          p.navbar-text or
+          li.register= link_to 'Register', new_user_registration_path
