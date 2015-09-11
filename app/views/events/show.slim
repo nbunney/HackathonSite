@@ -6,7 +6,10 @@
 .hero-image style="background-image: url('#{@event.image.url(:display)}')"
   .inner
     h2= @event.name
-    a.btn.btn-primary Register
+    -if @event.open?
+      = react_component('RegisterButton', participant: @participant.try(:id),
+                                          createAction: event_participants_url(@event),
+                                          destroyAction: event_participant_url(@event, ':participant_id'))
 .row.event-stats
   .col-xs-6.col-sm-3.stats-block
     =fa_icon 'building 3x'

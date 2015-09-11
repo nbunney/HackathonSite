@@ -19,5 +19,6 @@ Rails.application.routes.draw do
     resources :sponsorships
     resources :prizes
     resources :teams
+    resources :participants
   end
 end

@@ -2,8 +2,8 @@ class ActionStateButton extends React.Component {
   render () {
     return (
       <div className="btn state-action-btn" onClick={this.props.onClick}>
-        <div className="btn-state">{this.props.action}</div>
-        <div className="btn-action">{this.props.state}</div>
+        <div className="btn-action">{this.props.action}</div>
+        <div className="btn-state">{this.props.state}</div>
       </div>
     );
   }

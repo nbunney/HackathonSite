@@ -6,6 +6,10 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.friendly.find(params[:id])
+    @participant = Participant.where(
+      event: @event,
+      user: current_user
+    ).first
   end
 
   # Create
