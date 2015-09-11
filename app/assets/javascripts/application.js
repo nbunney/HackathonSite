@@ -14,6 +14,7 @@
 //= require react
 //= require react_ujs
 //= require components
+//= require grab
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets

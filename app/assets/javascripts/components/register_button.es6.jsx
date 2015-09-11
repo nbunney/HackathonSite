@@ -17,15 +17,13 @@ class RegisterButton extends React.Component {
 
   register () {
     this.setState({ loading: true });
-    fetch(this.props.action, {
+    grab(this.props.action, {
       method: this.props.method
     })
     .then((res) => {
-      if (res.status >= 200 && res.status < 300) {
-        this.setState({ registered: true, loading: false });
-      } else {
-        this.setState({ error: 'Something went wrong', loading: false });
-      }
+      this.setState({ registered: true, loading: false });
+    }).catch((e) => {
+      this.setState({ error: 'Something went wrong', loading: false });
     });
   }
 

@@ -2,9 +2,15 @@ class ApplicationController < ActionController::Base
   include Pundit
 
   protect_from_forgery with: :exception
+  skip_before_action :verify_authenticity_token, if: :xhr?
+
   before_action :include_pertinent_events, :enable_mini_profiler
 
   protected
+
+  def xhr?
+    request.xhr?
+  end
 
   def enable_mini_profiler
     if current_user && current_user.admin?
