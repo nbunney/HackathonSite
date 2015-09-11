@@ -1,5 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :allow_params, only: [:create, :update]
+  layout 'form'
 
   protected
 

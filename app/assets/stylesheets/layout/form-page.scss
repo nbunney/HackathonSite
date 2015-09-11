@@ -7,6 +7,9 @@
   &> * {
     margin-bottom: auto;
   }
+  &> *:only-child {
+    margin-bottom: 0;
+  }
   &> .row {
     width: 100%;
   }
