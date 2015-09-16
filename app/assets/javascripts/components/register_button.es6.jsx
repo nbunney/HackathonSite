@@ -76,6 +76,6 @@ class RegisterButton extends React.Component {
 
 RegisterButton.propTypes = {
   createAction: React.PropTypes.string.isRequired,
-  destroyAction: React.PropTypes.isRequired,
-  participant: React.PropTypes.string.isRequired
+  destroyAction: React.PropTypes.string.isRequired,
+  participant: React.PropTypes.string
 };
