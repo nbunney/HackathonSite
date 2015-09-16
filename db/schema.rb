@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150909031545) do
+ActiveRecord::Schema.define(version: 20150915192551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,12 +89,13 @@ ActiveRecord::Schema.define(version: 20150909031545) do
 
   create_table "sponsorship_tiers", force: :cascade do |t|
     t.integer  "event_id"
-    t.integer  "price",                             null: false
-    t.string   "name",                              null: false
-    t.string   "color",      limit: 6
-    t.text     "details",              default: "", null: false
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.integer  "price"
+    t.string   "name",                    null: false
+    t.string   "color"
+    t.text     "details",    default: "", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "columns",    default: 4,  null: false
   end
 
   add_index "sponsorship_tiers", ["event_id"], name: "index_sponsorship_tiers_on_event_id", using: :btree
