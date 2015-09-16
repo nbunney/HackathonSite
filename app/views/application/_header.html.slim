@@ -10,10 +10,9 @@ nav.navbar.navbar-default.navbar-fixed-top
 
     div.collapse.navbar-collapse#main-menu
       ul.nav.navbar-nav
-        li= link_to 'Home', '/'
-        li= link_to 'About', '/about'
+        li= link_to 'Events', '/events'
         - if @primary_event
-          li= link_to 'Sponsors', event_sponsorships_url(@primary_event)
+          li= link_to 'Sponsors', event_sponsorships_path(@primary_event)
           li= link_to 'Prizes', event_prizes_path(@primary_event)
           li= link_to 'Teams', event_teams_path(@primary_event)
           / No judged events yet — Gen 5
