@@ -18,7 +18,9 @@ class ApplicationController < ActionController::Base
 
   def enable_mini_profiler
     if current_user && current_user.admin?
-      Rack::MiniProfiler.authorize_request
+      unless Rails.env.production?
+        Rack::MiniProfiler.authorize_request
+      end
     end
   end
 
