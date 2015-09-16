@@ -17,6 +17,7 @@ gem 'counter_culture' # Advanced counter caches
 
 # Minor Utilities
 gem 'bootstrap_form'
+gem 'aws-sdk'
 
 # Template Stuff
 gem 'slim-rails'

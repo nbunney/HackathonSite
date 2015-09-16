@@ -48,6 +48,11 @@ GEM
     autoprefixer-rails (5.2.1.2)
       execjs
       json
+    aws-sdk (1.53.0)
+      aws-sdk-v1 (= 1.53.0)
+    aws-sdk-v1 (1.53.0)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
     babel-source (5.8.19)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
@@ -324,6 +329,7 @@ PLATFORMS
 DEPENDENCIES
   annotate
   autoprefixer-rails
+  aws-sdk
   bootstrap-sass
   bootstrap_form
   counter_culture
