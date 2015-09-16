@@ -1,0 +1,6 @@
+.col-sm-12.sponsorship-tier
+  h3 style="color: #{tier.color}"
+    =fa_icon 'certificate'
+    =tier.name
+-tier.companies.each do |co|
+  =render 'sponsor', company: co, tier: tier

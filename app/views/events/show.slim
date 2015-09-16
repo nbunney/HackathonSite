@@ -25,14 +25,28 @@
       = pluralize(@event.teams.count, 'Team')
   .col-xs-6.col-sm-3.stats-block
     =fa_icon 'trophy 3x'
-    div.text $1000 in Prizes
+    / TODO: actually give a number
+    div.text Awesome Prizes
 .row
   -loc = @event.location
   -if loc
     .map.col-xs-12 data-coords=loc.coords data-name=loc.name data-address=loc.address
 .row
-  .col-sm-6
-    h2 Sponsors
-    ul
-      -@event.sponsorship_tiers.each do |tier|
-        li=tier.name
+  -@event.sponsorship_tiers.by_price.each do |tier|
+    =render 'sponsorship_tier', tier: tier
+-tiers = @event.sponsorship_tiers.available.by_price
+-if tiers.count > 0 && @event.open?
+  .row.sponsorship-cta
+    .col-xs-12
+      h3 Sponsor This Event
+      -cols = 12 / tiers.count
+      -tiers.each do |tier|
+        div class="col-sm-#{cols} sponsorship-tier"
+          h4 style="color: #{tier.color}"
+            =fa_icon 'certificate 4x'
+            span.price= "$#{tier.price}"
+            span.name= tier.name
+          ul
+            -tier.details.each do |feat|
+              li= feat
+          a.btn.btn-primary style="background-color: #{tier.color}" href="mailto:sponsor@valleyhackathon.com" Sponsor
