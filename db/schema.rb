@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150915192551) do
+ActiveRecord::Schema.define(version: 20150917041949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,10 +23,12 @@ ActiveRecord::Schema.define(version: 20150915192551) do
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
     t.text     "description",       default: "", null: false
-    t.string   "contact",                        null: false
+    t.string   "contact"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
   end
+
+  add_index "companies", ["name"], name: "index_companies_on_name", unique: true, using: :btree
 
   create_table "events", force: :cascade do |t|
     t.string   "name",                           null: false
@@ -49,6 +51,7 @@ ActiveRecord::Schema.define(version: 20150915192551) do
   end
 
   add_index "events", ["location_id"], name: "index_events_on_location_id", using: :btree
+  add_index "events", ["name"], name: "index_events_on_name", unique: true, using: :btree
   add_index "events", ["slug"], name: "index_events_on_slug", unique: true, using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -75,6 +78,8 @@ ActiveRecord::Schema.define(version: 20150915192551) do
     t.datetime "updated_at",               null: false
   end
 
+  add_index "locations", ["name"], name: "index_locations_on_name", unique: true, using: :btree
+
   create_table "participants", force: :cascade do |t|
     t.integer  "user_id",    null: false
     t.integer  "team_id"
@@ -85,19 +90,21 @@ ActiveRecord::Schema.define(version: 20150915192551) do
 
   add_index "participants", ["event_id"], name: "index_participants_on_event_id", using: :btree
   add_index "participants", ["team_id"], name: "index_participants_on_team_id", using: :btree
+  add_index "participants", ["user_id", "event_id"], name: "index_participants_on_user_id_and_event_id", unique: true, using: :btree
   add_index "participants", ["user_id"], name: "index_participants_on_user_id", using: :btree
 
   create_table "sponsorship_tiers", force: :cascade do |t|
     t.integer  "event_id"
     t.integer  "price"
     t.string   "name",                    null: false
-    t.string   "color"
+    t.string   "color",                   null: false
     t.text     "details",    default: "", null: false
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.integer  "columns",    default: 4,  null: false
   end
 
+  add_index "sponsorship_tiers", ["event_id", "name"], name: "index_sponsorship_tiers_on_event_id_and_name", unique: true, using: :btree
   add_index "sponsorship_tiers", ["event_id"], name: "index_sponsorship_tiers_on_event_id", using: :btree
 
   create_table "sponsorships", force: :cascade do |t|
@@ -108,6 +115,7 @@ ActiveRecord::Schema.define(version: 20150915192551) do
   end
 
   add_index "sponsorships", ["company_id"], name: "index_sponsorships_on_company_id", using: :btree
+  add_index "sponsorships", ["sponsorship_tier_id", "company_id"], name: "index_sponsorships_on_sponsorship_tier_id_and_company_id", unique: true, using: :btree
   add_index "sponsorships", ["sponsorship_tier_id"], name: "index_sponsorships_on_sponsorship_tier_id", using: :btree
 
   create_table "team_invites", force: :cascade do |t|
@@ -120,6 +128,7 @@ ActiveRecord::Schema.define(version: 20150915192551) do
     t.datetime "updated_at",                       null: false
   end
 
+  add_index "team_invites", ["team_id", "email", "user_id"], name: "index_team_invites_on_team_id_and_email_and_user_id", unique: true, using: :btree
   add_index "team_invites", ["team_id"], name: "index_team_invites_on_team_id", using: :btree
   add_index "team_invites", ["user_id"], name: "index_team_invites_on_user_id", using: :btree
 
@@ -130,6 +139,7 @@ ActiveRecord::Schema.define(version: 20150915192551) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "teams", ["event_id", "name"], name: "index_teams_on_event_id_and_name", unique: true, using: :btree
   add_index "teams", ["event_id"], name: "index_teams_on_event_id", using: :btree
 
   create_table "users", force: :cascade do |t|
