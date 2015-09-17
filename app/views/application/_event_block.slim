@@ -1,5 +1,5 @@
-.hackathon-event style="background-image: url('#{event.image.url(:display)}')"
-  .inner
+a.hackathon-event style="background-image: url('#{event.image.url(:display)}')" href=event_url(event)
+  span.inner
     h2
       = event.name
       - if subtitle
