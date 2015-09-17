@@ -47,4 +47,9 @@ class Event < ActiveRecord::Base
   scope :after, ->(date = Date.today){ where('date >= ?', date) }
   scope :before, ->(date = Date.today){ where('date < ?', date) }
   scope :by_date, ->{ order(:date) }
+
+  def sorted_schedule
+    schedule.sort_by { |s| s[:time] }
+            .group_by { |s| s[:time].to_date }
+  end
 end

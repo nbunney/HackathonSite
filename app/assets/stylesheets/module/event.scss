@@ -1,13 +1,15 @@
 .l-events .map {
   height: 350px;
 }
-.event-stats {
+.event-stats,
+.event-schedule {
   color: $light-gray;
   background-color: $orange;
   text-align: center;
-  font-family: 'Josefin Sans';
+  font-family: $headings-font-family;
   text-transform: uppercase;
-
+}
+.event-stats {
   .stats-block {
     display: flex;
     min-height: 150px;
@@ -20,4 +22,28 @@
     display: block;
   }
 }
+.event-schedule {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 150px;
 
+  .day {
+    font-size: 50px;
+  }
+  .schedule {
+    font-size: 14px;
+    padding: 15px;
+    line-height: 30px;
+  }
+  .schedule-unknown { color: lighten($orange, 10%); }
+  .schedule-line { overflow: hidden; }
+  .schedule-line-name { float: left; margin-right: 20px; }
+  .schedule-line-time { float: right; }
+}
+
+@media(min-width: $screen-sm-min) {
+  .event-schedule {
+    flex-direction: row;
+  }
+}

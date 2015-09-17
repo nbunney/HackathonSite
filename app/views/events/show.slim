@@ -31,6 +31,27 @@
   -loc = @event.location
   -if loc
     .map.col-xs-12 data-coords=loc.coords data-name=loc.name data-address=loc.address
+.row.event-schedule
+  -if @event.schedule.present?
+    -@event.sorted_schedule.each do |date, schedule|
+      .col-md-4.date
+        .weekday=Date::DAYNAMES[date.wday]
+        .day
+          =>Date::ABBR_MONTHNAMES[date.month]
+          =date.day
+      .col-md-8.schedule
+          -schedule.each do |s|
+            .schedule-line
+              .schedule-line-name=s[:name]
+              .schedule-line-time=s[:time].strftime('%I:%M%p')
+  -else
+    .col-md-3.date
+      .weekday=Date::DAYNAMES[@event.date.wday]
+      .day
+        =>Date::ABBR_MONTHNAMES[@event.date.month]
+        =@event.date.day
+    .col-md-9.schedule-unknown
+      | We don't currently have schedule info for this event
 .row
   -@event.sponsorship_tiers.by_price.each do |tier|
     =render 'sponsorship_tier', tier: tier
