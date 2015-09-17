@@ -23,6 +23,7 @@ class Event < ActiveRecord::Base
   friendly_id :name, :use => :slugged
   enum event_type: %i[mini normal]
   enum status: %i[open closed]
+  serialize :schedule, Array
 
   has_attached_file :image, styles: {
       display: '2340x800#',
