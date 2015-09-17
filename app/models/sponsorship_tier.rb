@@ -14,9 +14,9 @@
 
 class SponsorshipTier < ActiveRecord::Base
   belongs_to :event, touch: true
-  has_many :sponsorships
+  has_many :sponsorships, dependent: :destroy
   has_many :companies, through: :sponsorships
-  serialize :details
+  serialize :details, Array
 
   validates :name, presence: true
   validates :event, presence: true

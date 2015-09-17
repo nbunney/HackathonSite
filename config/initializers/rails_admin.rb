@@ -12,6 +12,8 @@ RailsAdmin.config do |config|
     raise ActionController::RoutingError unless current_user.admin?
   end
 
+  config.excluded_models << Sponsorship
+
   ## == PaperTrail ==
   # config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
 
