@@ -34,6 +34,9 @@ html
     = stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Lato:700,400|Josefin+Sans:600'
     = stylesheet_link_tag :application, media: 'all'
     = csrf_meta_tags
+    = javascript_include_tag 'https://maps.googleapis.com/maps/api/js?signed_in=true'
+    -if content_for? :head
+      = yield :head
   body class="l-#{controller.controller_name} #{controller.controller_name}"
     = render 'header'
     = yield :content
@@ -41,5 +44,3 @@ html
 
     / Javascript at the bottom
     = javascript_include_tag :application
-    -if content_for? :head
-      = yield :head
