@@ -14,15 +14,15 @@
   .col-xs-6.col-sm-3.stats-block
     =fa_icon 'building 3x'
     div.text
-      = pluralize(@event.sponsorships.count, 'Sponsor')
+      = pluralize(@event.sponsorships_count, 'Sponsor')
   .col-xs-6.col-sm-3.stats-block
     =fa_icon 'user 3x'
     div.text
-      = pluralize(@event.participants.count, 'Participant')
+      = pluralize(@event.participants_count, 'Participant')
   .col-xs-6.col-sm-3.stats-block
     =fa_icon 'users 3x'
     div.text
-      = pluralize(@event.teams.count, 'Team')
+      = pluralize(@event.teams_count, 'Team')
   .col-xs-6.col-sm-3.stats-block
     =fa_icon 'trophy 3x'
     / TODO: actually give a number
