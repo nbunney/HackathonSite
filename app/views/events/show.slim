@@ -52,7 +52,7 @@
         =@event.date.day
     .col-md-9.schedule-unknown
       | We don't currently have schedule info for this event
-.row
+.row#sponsors
   -@event.sponsorship_tiers.by_price.each do |tier|
     =render 'sponsorship_tier', tier: tier
 -tiers = @event.sponsorship_tiers.available.by_price

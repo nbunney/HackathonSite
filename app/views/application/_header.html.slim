@@ -12,9 +12,9 @@ nav.navbar.navbar-default.navbar-fixed-top
       ul.nav.navbar-nav
         li= link_to 'Events', '/events'
         - if @primary_event
-          li= link_to 'Sponsors', event_sponsorships_path(@primary_event)
-          li= link_to 'Prizes', event_prizes_path(@primary_event)
-          li= link_to 'Teams', event_teams_path(@primary_event)
+          li= link_to 'Sponsors', "#{event_path(@primary_event)}#sponsors"
+          /li= link_to 'Prizes', event_prizes_path(@primary_event)
+          /li= link_to 'Teams', event_teams_path(@primary_event)
           / No judged events yet — Gen 5
           /li= link_to 'Judges', '/judges'
         - if user_signed_in?
