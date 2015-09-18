@@ -6,15 +6,17 @@ class DocumentsController < ApplicationController
 
   def show
     ALLOWED_DOCUMENTS.include?(params[:doc]) or not_found!
+    template = params[:doc]
 
     @contact = "me@plejeck.com"
 
-    render params[:doc]
+    render template if stale?(@contact, template: template, public: true)
   end
 
   def rules
     ALLOWED_RULESETS.include?(params[:type]) or not_found!
+    template = "documents/rules/#{params[:type]}"
 
-    render "rules/#{params[:type]}"
+    render template if stale?(template: template, public: true)
   end
 end
