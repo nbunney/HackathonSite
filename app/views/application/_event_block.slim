@@ -2,6 +2,11 @@ a.hackathon-event style="background-image: url('#{event.image.url(:display)}')" 
   span.inner
     h2
       = event.name
-      - if subtitle
-        small=< subtitle
-    p= event.description
+      - if event.upcoming?
+        span.label.label-primary< Upcoming
+    -if event.open?
+      .registration
+        - participant = event.participant(current_user)
+        = react_component('RegisterButton', participant: participant.try(:id),
+                                            createAction: event_participants_url(event),
+                                            destroyAction: event_participant_url(event, ':participant_id'))
