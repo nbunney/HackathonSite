@@ -1,4 +1,5 @@
-a.hackathon-event style="background-image: url('#{event.image.url(:display)}')" href=event_url(event)
+- wide ||= false
+a class="event-block #{'event-block-wide' if wide}" style="background-image: url('#{event.image.url(:display)}')" href=event_url(event)
   span.inner
     h2
       = event.name
