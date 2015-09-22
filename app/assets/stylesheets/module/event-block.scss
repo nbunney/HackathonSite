@@ -1,0 +1,39 @@
+a.event-block {
+  @include dotty-with-hover;
+  @include make-sm-column(6);
+
+  background-size: cover;
+  background-position: center;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 300px;
+  color: white;
+  text-decoration: none !important;
+
+  &::after {
+    opacity: 0.8;
+  }
+  .label {
+    font-size: 30%;
+    vertical-align: middle;
+  }
+  .registration {
+    margin-top: 70px;
+    opacity: 0;
+    transition: .2s ease-in-out;
+  }
+  &:hover .registration {
+    opacity: 1;
+  }
+}
+
+a.event-block-wide {
+  width: calc(100% + 30px);
+  margin: 0 -15px;
+  align-items: center;
+
+  .registration {
+    margin-top: 15px;
+    opacity: 1;
+  }
+}

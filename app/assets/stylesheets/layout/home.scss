@@ -5,7 +5,7 @@
   }
   .navbar {
     background-color: transparent;
-    border-color: hsla(0, 0%, 90%, 0.2);
+    border-bottom: 1px solid hsla(0, 0%, 90%, 0.2);
   }
   @media (min-width: $screen-sm-min) {
     .navbar-collapse {
@@ -37,28 +37,6 @@
     @include make-row;
 
     margin: 0;
-  }
-  .hackathon-event {
-    @include dotty-with-hover;
-    @include make-sm-column(6);
-
-    background-size: cover;
-    background-position: center;
-    align-items: flex-start;
-    justify-content: flex-start;
-    height: 300px;
-    color: white;
-    text-decoration: none !important;
-
-    &::after {
-      opacity: 0.8;
-    }
-    &.modesto {
-      background-image: image-url('modesto-arch.jpg');
-    }
-    &.turlock {
-      background-image: url('http://opticosdesign.com/wp-content/uploads/2013/12/P1050310-4.jpg');
-    }
   }
   .footer {
     display: none;
