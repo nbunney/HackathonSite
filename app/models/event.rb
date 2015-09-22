@@ -52,4 +52,12 @@ class Event < ActiveRecord::Base
     schedule.sort_by { |s| s[:time] }
             .group_by { |s| s[:time].to_date }
   end
+
+  def upcoming?
+    date > Date.today
+  end
+
+  def participant(user)
+    participants.where(user: user).first
+  end
 end

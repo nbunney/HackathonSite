@@ -1,15 +1,12 @@
 class EventsController < ApplicationController
   # Retrieve
   def index
-    @events = Event.all
+    @events = Event.all.by_date.reverse
   end
 
   def show
     @event = Event.friendly.find(params[:id])
-    @participant = Participant.where(
-      event: @event,
-      user: current_user
-    ).first
+    @participant = @event.participant(current_user)
   end
 
   # Create
