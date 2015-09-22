@@ -19,7 +19,7 @@ a.event-block {
   }
   .registration {
     margin-top: 70px;
-    opacity: 0;
+    opacity: 1;
     transition: .2s ease-in-out;
   }
   &:hover .registration {
@@ -36,4 +36,8 @@ a.event-block-wide {
     margin-top: 15px;
     opacity: 1;
   }
+}
+@media (min-width: $screen-sm-min) {
+  a.event-block .registration { opacity: 0; }
+  a.event-block-wide .registration { opacity: 1; }
 }
