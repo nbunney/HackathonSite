@@ -14,11 +14,13 @@ class RegisterButton extends React.Component {
     };
   }
 
-  clearError () {
+  clearError (e) {
+    e.preventDefault();
     this.setState({ error: null });
   }
 
-  unregister () {
+  unregister (e) {
+    e.preventDefault();
     let pid = this.state.participant;
     let url = this.props.destroyAction.replace(':participant_id', pid);
 
@@ -34,7 +36,8 @@ class RegisterButton extends React.Component {
     });
   }
 
-  register () {
+  register (e) {
+    e.preventDefault();
     this.setState({ loading: true });
     grab.json(this.props.createAction, {
       credentials: 'same-origin',
