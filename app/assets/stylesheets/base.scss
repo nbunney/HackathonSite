@@ -104,3 +104,8 @@ input[type=color] {
 .input-group-btn:last-child > .btn, .input-group-btn:last-child > .btn-group {
   margin-left: -2px;
 }
+.label {
+  padding-top: .5em;
+  border-radius: 0;
+  text-transform: uppercase;
+}
