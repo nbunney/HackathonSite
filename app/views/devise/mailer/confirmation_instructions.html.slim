@@ -21,36 +21,17 @@ html xmlns="http://www.w3.org/1999/xhtml"
             td
               h1 Welcome to the Valley Hackathon
               p.lead Please confirm your email address.
-              p We have some upcoming events you might be interested in
         =ink_row(cell_options: { class: 'wrapper last' }) do
           =ink_column(12) do
             =ink_cell(center: true) do
               table.button: tr: td
                 a href=confirmation_url(@user, confirmation_token: @token) Confirm Account
-        =ink_row({ class: 'callout' }, cell_options: { class: 'wrapper last' }) do
-          =ink_column(12) do
-            td.panel
-              p
-                | Phasellus dictum sapien a neque luctus cursus. Pellentesque sem dolor, fringilla et pharetra vitae.
-                a href="#"  Click it! »
-        =ink_row({ class: 'footer' }, cell_options: { class: 'wrapper' }) do
-          =ink_column(6) do
-            td.left-text-pad
-              h5 Connect With Us:
-              table.tiny-button.facebook: tr: td
-                a href="#" Facebook
-              br
-              table.tiny-button.twitter: tr: td
-                a href="#" Twitter
-              br
-              table.tiny-button.google-plus: tr: td
-                a href="#" Google+
         =ink_row(cell_options: { class: 'wrapper last' }) do
           =ink_column(12) do
             =ink_cell(center: true) do
               p style="text-align:center;" 
                 a href="#"  Terms
-                | |
+                |< |
                 a href="#"  Privacy
-                | |
+                |< |
                 a href="#"  Unsubscribe
