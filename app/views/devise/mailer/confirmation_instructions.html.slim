@@ -11,8 +11,7 @@ html xmlns="http://www.w3.org/1999/xhtml"
         =ink_container(cell_options: { class: 'wrapper last' }) do
           =ink_column(12) do
             td.six.sub-columns
-              =image_url('logo.png')
-              =image_tag image_url('logo.png'), height: 55
+              =image_tag image_path('logo-white.png'), height: 55
             td.six.sub-columns.last style=("text-align:right; vertical-align:middle;") 
               span.user-name= @user.real_name
       / content + footer
