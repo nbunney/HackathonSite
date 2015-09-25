@@ -5,7 +5,7 @@ a class="event-block #{'event-block-wide' if wide}" style="background-image: url
       = event.name
       - if event.upcoming?
         span.label.label-primary< Upcoming
-    -if event.open?
+    -if event.open? && current_user
       .registration
         - participant = event.participant(current_user)
         = react_component('RegisterButton', participant: participant.try(:id),
