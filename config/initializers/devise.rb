@@ -15,8 +15,8 @@ Devise.setup do |config|
   # bcrypt strength
   config.stretches = Rails.env.test? ? 1 : 11
 
-  # Allows a week of access before a user *must* confirm their email address
-  config.allow_unconfirmed_access_for = 7.days
+  # Allow user to remain permanently unconfirmed, nag them to confirm instead
+  config.allow_unconfirmed_access_for = nil
   # Confirmation tokens last a week
   config.confirm_within = 7.days
 

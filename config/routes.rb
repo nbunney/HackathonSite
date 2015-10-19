@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/about' => 'documents#about'
 
   devise_for :users, controllers: {
+    confirmations: 'users/confirmations',
     registrations: 'users/registrations',
     sessions: 'users/sessions',
     passwords: 'users/passwords'

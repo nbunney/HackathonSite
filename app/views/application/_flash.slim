@@ -1,4 +1,9 @@
--flash.each do |key, value|
-  -key = 'danger' if key == 'alert'
-  -key = 'warning' if key == 'notice'
+- if user_signed_in?
+  - unless current_user.confirmed?
+    div.alert.alert-warning
+      | Uh oh! It looks like you haven't confirmed your email yet
+      =< link_to 'Resend', new_user_confirmation_path
+- flash.each do |key, value|
+  - key = 'danger' if key == 'alert'
+  - key = 'warning' if key == 'notice'
   div class='alert alert-#{key}'= value
