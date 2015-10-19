@@ -31,7 +31,8 @@
 
 class User < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :real_name, :use => :slugged
+  friendly_id :real_name, use: :slugged
+  has_many :participant, dependent: :destroy
 
   has_attached_file :avatar,
     styles: { medium: '300x300#', thumb: '100x100#' },
