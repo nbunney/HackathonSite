@@ -1,4 +1,4 @@
-a.event-block {
+.event-block {
   @include dotty-with-hover;
   @include make-sm-column(6);
 
@@ -9,10 +9,34 @@ a.event-block {
   height: 300px;
   color: white;
   text-decoration: none !important;
+  position: relative;
 
   &::after {
     opacity: 0.8;
   }
+  // HACK: Brought to you by nested links
+  .overlay-link {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    left: 0;
+  }
+  .inner {
+    position: static;
+    z-index: initial;
+
+    &> h2 {
+      position: relative;
+      z-index: 2;
+    }
+    &> .registration {
+      position: relative;
+      z-index: 10;
+    }
+  }
+  // ENDHACK
   .label {
     font-size: 30%;
     vertical-align: middle;
@@ -27,7 +51,7 @@ a.event-block {
   }
 }
 
-a.event-block-wide {
+.event-block-wide {
   width: calc(100% + 30px);
   margin: 0 -15px;
   align-items: center;
@@ -38,6 +62,6 @@ a.event-block-wide {
   }
 }
 @media (min-width: $screen-sm-min) {
-  a.event-block .registration { opacity: 0; }
-  a.event-block-wide .registration { opacity: 1; }
+  .event-block .registration { opacity: 0; }
+  .event-block-wide .registration { opacity: 1; }
 }
