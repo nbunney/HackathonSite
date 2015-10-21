@@ -2,6 +2,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :allow_params, only: [:create, :update]
   layout 'form'
 
+  def new
+    @event = params.delete(:event)
+    super
+  end
+
+  def create
+    event = params.delete(:event)
+    super do |user|
+      if user.persisted?
+        Participant.new(user: user, event: event)
+        authorize @participant
+        @participant.save!
+      end
+    end
+  end
+
   protected
 
   def after_sign_up_path_for(_)
