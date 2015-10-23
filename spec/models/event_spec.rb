@@ -16,6 +16,11 @@
 #  image_file_size    :integer
 #  image_updated_at   :datetime
 #  location_id        :integer
+#  sponsorships_count :integer          default("0"), not null
+#  participants_count :integer          default("0"), not null
+#  teams_count        :integer          default("0"), not null
+#  prizes_total       :integer          default("0"), not null
+#  schedule           :text
 #
 
 require 'rails_helper'
