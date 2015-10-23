@@ -25,7 +25,7 @@
 
 class Event < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :name, :use => :slugged
+  friendly_id :name, use: :slugged
   enum event_type: %i[mini normal]
   enum status: %i[open closed]
   serialize :schedule, Array
