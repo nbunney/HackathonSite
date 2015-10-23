@@ -47,6 +47,7 @@ class Event < ActiveRecord::Base
   has_many :teams, dependent: :destroy
   has_many :sponsorship_tiers, dependent: :destroy
   has_many :sponsorships, through: :sponsorship_tiers
+  has_many :polls, dependent: :destroy
 
   default_scope ->{ eager_load(:location) }
   scope :after, ->(date = Date.today){ where('date >= ?', date) }
