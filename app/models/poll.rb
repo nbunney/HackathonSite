@@ -15,13 +15,20 @@ class Poll < ActiveRecord::Base
   validates :event, presence: true
 
   belongs_to :event, touch: true
+  has_many :votes, dependent: :destroy
+  # TODO: make this actually have a real choices table
+  has_many :teams, through: :event
 
-  scope :public, ->{ where(public: true) }
+  scope :visible, ->{ where(public: true) }
   scope :open, ->(date = Date.today){
     where('opened_at >= ? AND closed_at < ?', date)
   }
 
   def open?
     (opened_at..closed_at).include?(Date.today)
+  end
+
+  def score
+    votes.group(:team_id).sum(:score).order(:sum)
   end
 end
