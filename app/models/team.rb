@@ -17,4 +17,6 @@ class Team < ActiveRecord::Base
 
   belongs_to :event, touch: true
   has_many :participants, dependent: :nullify
+
+  scope :excluding, ->(team){ where.not(id: team.try(:id)) }
 end

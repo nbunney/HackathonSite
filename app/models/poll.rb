@@ -25,10 +25,18 @@ class Poll < ActiveRecord::Base
   }
 
   def open?
-    (opened_at..closed_at).include?(Date.today)
+    now = Date.today
+    now >= opened_at && now < closed_at
   end
 
   def score
-    votes.group(:team_id).sum(:score).order(:sum)
+    results = votes.group(:team_id).average(:score).map do |t, s|
+      t = Team.find(t)
+      [t.name, {
+        members: t.participants.eager_load(:user).pluck('users.real_name'),
+        score: s.to_f
+      }]
+    end
+    Hash[results]
   end
 end

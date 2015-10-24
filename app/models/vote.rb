@@ -24,4 +24,11 @@ class Vote < ActiveRecord::Base
     less_than_or_equal_to: 10,
     integer_only: true
   }
+  validate :not_voting_for_self
+
+  def not_voting_for_self
+    if team.id == participant.team_id
+      errors[:base] << 'You cannot vote for yourself'
+    end
+  end
 end

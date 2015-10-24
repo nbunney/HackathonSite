@@ -1,0 +1,11 @@
+h2 Ballot
+p
+  | Give each team a score out of 10.
+= form_tag(event_poll_ballots_path, method: :post) do
+  - @poll.teams.excluding(@own_team).each do |t|
+    .row
+      .col-sm-5: h4= t.name
+      .col-sm-4= t.participants.eager_load(:user).pluck('users.real_name').join(', ')
+      .col-sm-3
+        input.form-control type="number" min="0" max="10" step="1" name="votes[#{t.id}]"
+  button.btn.btn-primary Vote
