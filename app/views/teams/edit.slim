@@ -1,0 +1,10 @@
+= bootstrap_form_for(@team, url: event_teams_path(@team.event),
+                            html: { method: :post },
+                            layout: :horizontal) do |f|
+  .row: .col-sm-offset-2.col-sm-10: h2 Create team
+  = render 'flash'
+  .input-group
+    = f.hidden_field :event_id
+    = f.text_field :name, autofocus: true,
+                          append: f.submit('Create',
+                                           class: 'btn btn-primary')

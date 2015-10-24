@@ -1,0 +1,9 @@
+- if user_signed_in? && @user_team
+  h2 Your Team
+  = render 'block', team: @user_team
+  a.btn.btn-primary Add Members
+- else
+  a.btn.btn-primary href=new_event_team_path Create
+h2 Teams
+- @teams.each do |t|
+  = render 'block', team: t
