@@ -18,6 +18,8 @@ class Location < ActiveRecord::Base
   reverse_geocoded_by :latitude, :longitude
   after_validation :geocode, :reverse_geocode
 
+  has_many :events, dependent: :nullify
+
   def coords
     "#{latitude},#{longitude}"
   end
