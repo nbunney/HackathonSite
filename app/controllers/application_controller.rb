@@ -30,9 +30,16 @@ class ApplicationController < ActionController::Base
     @next_event = @future_events.first
     @prev_event = @past_events.last
 
+    # If we don't have a future event, show two past events
+    unless @next_event
+      @next_event = @prev_event
+      @prev_event = @past_events.last(2).first
+    end
+
     # An event in the past 2 days is still recent enough to consider "primary"
     prev_date = @prev_event.try(:date) || Date.new(2010, 1, 1)
     is_recent = Date.today - prev_date > 2.days
     @primary_event = is_recent ? @prev_event : @next_event
+
   end
 end
