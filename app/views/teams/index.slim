@@ -2,7 +2,7 @@
   h2 Your Team
   = render 'block', team: @user_team
   a.btn.btn-primary Add Members
-- else
+- elsif @event.open?
   a.btn.btn-primary href=new_event_team_path Create
 h2 Teams
 - @teams.each do |t|
