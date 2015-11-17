@@ -58,7 +58,9 @@ class Event < ActiveRecord::Base
     list do
       sort_by :date
       field :name
-      field :date { sort_reverse true }
+      field :date do
+        sort_reverse true
+      end
       field :location
       field :event_type
       field :status
