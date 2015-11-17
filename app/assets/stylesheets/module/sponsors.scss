@@ -16,12 +16,24 @@
     margin: 20px auto;
     text-align: left;
     height: 100px;
+    width: 100%;
+    padding-left: 15px;
   }
+  .btn {
+    margin-top: auto;
+  }
+}
+
+.sponsorship-cta-tiers {
+  display: flex;
 }
 
 .sponsorship-cta .sponsorship-tier {
   text-align: center;
   border-right: 1px solid $light-gray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   &:last-child {
     border: none;
