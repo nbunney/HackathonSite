@@ -54,6 +54,29 @@ class Event < ActiveRecord::Base
   scope :before, ->(date = Date.today){ where('date < ?', date) }
   scope :by_date, ->{ order(:date) }
 
+  rails_admin do
+    list do
+      sort_by :date
+      field :name
+      field :date { sort_reverse true }
+      field :location
+      field :event_type
+      field :status
+    end
+    edit do
+      field :name
+      field :slug
+      field :date
+      field :event_type
+      field :status
+      field :image
+      field :location
+      field :schedule, :serialized
+      field :teams
+      field :sponsorship_tiers
+    end
+  end
+
   def sorted_schedule
     schedule.sort_by { |s| s[:time] }
             .group_by { |s| s[:time].to_date }

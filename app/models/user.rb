@@ -44,4 +44,14 @@ class User < ActiveRecord::Base
 
   devise :confirmable, :database_authenticatable, :registerable, :recoverable,
     :rememberable, :trackable, :validatable
+
+  rails_admin do
+    list do
+      field :real_name
+      field :email
+      include_all_fields
+      exclude_fields :encrypted_password, :reset_password_token,
+                     :confirmation_token
+    end
+  end
 end

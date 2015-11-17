@@ -27,6 +27,24 @@ class SponsorshipTier < ActiveRecord::Base
   scope :available, ->{ where.not(price: nil) }
   scope :by_price, ->{ order('price DESC') }
 
+  rails_admin do
+    list do
+      field :event
+      field :name
+      field :price
+      field :color, :color
+    end
+    edit do
+      field :event
+      field :name
+      field :price
+      field :color, :color
+      field :details, :serialized
+      field :columns
+      field :featured
+    end
+  end
+
   def available?
     !unavailable?
   end
