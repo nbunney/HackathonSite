@@ -20,7 +20,10 @@
   .col-xs-6.col-sm-3.stats-block
     =fa_icon 'trophy 3x'
     / TODO: actually give a number
-    div.text Awesome Prizes
+    -if @event.prizes_total.blank?
+      div.text Awesome Prizes
+    -else
+      div.text= "$#{@event.prizes_total} in Prizes"
 .row
   -loc = @event.location
   -if loc
