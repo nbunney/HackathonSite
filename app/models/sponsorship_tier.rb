@@ -42,6 +42,7 @@ class SponsorshipTier < ActiveRecord::Base
       field :details, :serialized
       field :columns
       field :featured
+      field :companies
     end
   end
 

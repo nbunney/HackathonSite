@@ -20,6 +20,23 @@ class Location < ActiveRecord::Base
 
   has_many :events, dependent: :nullify
 
+  rails_admin do
+    list do
+      field :name
+      field :address
+      field :sub_address
+      field :info
+    end
+    edit do
+      field :name
+      field :address
+      field :sub_address
+      field :info
+      field :latitude
+      field :longitude
+    end
+  end
+
   def coords
     "#{latitude},#{longitude}"
   end

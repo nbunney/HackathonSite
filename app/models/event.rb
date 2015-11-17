@@ -76,6 +76,7 @@ class Event < ActiveRecord::Base
       field :schedule, :serialized
       field :teams
       field :sponsorship_tiers
+      field :prizes_total
     end
   end
 
