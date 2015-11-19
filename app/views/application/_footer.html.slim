@@ -11,19 +11,29 @@
       li.col-sm-4.col-md-3
         h3 Recent Events
         ul.vertical
-          -@past_events.each do |e|
+          -if @past_events
+            -@past_events.each do |e|
+              li
+                span.event-inline
+                  span.date= e.date.strftime('%b %-d')
+                  = link_to(e.name, e)
+          -else
             li
               span.event-inline
-                span.date= e.date.strftime('%b %-d')
-                = link_to(e.name, e)
+                No Past Events
       li.col-sm-4.col-md-3
         h3 Future Events
         ul.vertical
-          -@future_events.each do |e|
+          -if @future_events
+            -@future_events.each do |e|
+              li
+                span.event-inline
+                  span.date= e.date.strftime('%b %-d')
+                  = link_to(e.name, e)
+          -else
             li
               span.event-inline
-                span.date= e.date.strftime('%b %-d')
-                = link_to(e.name, e)
+                To Be Announced
       li.col-sm-12.col-md-3.copyright
         p &copy; 2015 ValleyHackathon.com
         p

@@ -7,7 +7,7 @@
   = render 'flash'
   = f.hidden_field :event, value: @event if @event
   .field= f.email_field :email, autofocus: true
-  .field= f.text_field :real_name
+  .field= f.text_field :name
   .field= f.password_field :password
   .row: .col-sm-offset-3.col-sm-9
     = f.submit 'Register', class: 'btn btn-primary'

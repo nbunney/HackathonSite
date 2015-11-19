@@ -14,6 +14,13 @@ gem 'geocoder' # Geocoding
 gem 'friendly_id' # Slugs
 gem 'rails_admin' # Lazy halfassed admin panel
 gem 'counter_culture' # Advanced counter caches
+gem 'pg_search' # Searching for users by name
+
+# Omniauth Strategies
+gem 'omniauth-twitter'
+gem 'omniauth-github'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'
 
 # Minor Utilities
 gem 'bootstrap_form'
@@ -54,6 +61,9 @@ group :development, :test do
   gem 'spring' # Faster CLI
   gem 'rspec-rails' # Specs > Tests
   gem 'annotate' # Schema annotations inside model-related files
+  gem 'shoulda-matchers' # Shorthand matching for tests
+  gem 'faker' # Fake data
+  gem 'factory_girl_rails' # Use factories
 
   # Guard handles responding to filesystem events
   gem 'guard'

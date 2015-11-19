@@ -25,7 +25,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def allow_params
-    devise_parameter_sanitizer.for(:sign_up) << :real_name
-    devise_parameter_sanitizer.for(:account_update) << :real_name
+    devise_parameter_sanitizer.for(:sign_up) << :name
+    devise_parameter_sanitizer.for(:account_update) << :name
   end
 end

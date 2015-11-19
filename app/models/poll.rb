@@ -33,7 +33,7 @@ class Poll < ActiveRecord::Base
     results = votes.group(:team_id).average(:score).map do |t, s|
       t = Team.find(t)
       [t.name, {
-        members: t.participants.eager_load(:user).pluck('users.real_name'),
+        members: t.participants.eager_load(:user).pluck('users.name'),
         score: s.to_f
       }]
     end
