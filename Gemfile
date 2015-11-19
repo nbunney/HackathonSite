@@ -16,6 +16,12 @@ gem 'rails_admin' # Lazy halfassed admin panel
 gem 'counter_culture' # Advanced counter caches
 gem 'pg_search' # Searching for users by name
 
+# Omniauth Strategies
+gem 'omniauth-twitter'
+gem 'omniauth-github'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'
+
 # Minor Utilities
 gem 'bootstrap_form'
 gem 'aws-sdk'
