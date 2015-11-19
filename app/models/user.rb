@@ -31,6 +31,7 @@
 
 class User < ActiveRecord::Base
   extend FriendlyId
+  include PgSearch
   friendly_id :real_name, use: :slugged
   has_many :participant, dependent: :destroy
 
@@ -44,6 +45,7 @@ class User < ActiveRecord::Base
 
   devise :confirmable, :database_authenticatable, :registerable, :recoverable,
     :rememberable, :trackable, :validatable
+  pg_search_scope :search_by_name, against: :real_name
 
   rails_admin do
     list do

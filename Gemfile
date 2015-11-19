@@ -14,6 +14,7 @@ gem 'geocoder' # Geocoding
 gem 'friendly_id' # Slugs
 gem 'rails_admin' # Lazy halfassed admin panel
 gem 'counter_culture' # Advanced counter caches
+gem 'pg_search' # Searching for users by name
 
 # Minor Utilities
 gem 'bootstrap_form'
