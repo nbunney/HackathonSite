@@ -96,6 +96,13 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.8)
     execjs (2.6.0)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.5.0)
+      factory_girl (~> 4.5.0)
+      railties (>= 3.0.0)
+    faker (1.5.0)
+      i18n (~> 0.5)
     ffi (1.9.10)
     font-awesome-rails (4.4.0.0)
       railties (>= 3.2, < 5.0)
@@ -297,6 +304,8 @@ GEM
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     shellany (0.0.1)
+    shoulda-matchers (3.0.1)
+      activesupport (>= 4.0.0)
     slim (3.0.6)
       temple (~> 0.7.3)
       tilt (>= 1.3.3, < 2.1)
@@ -343,6 +352,8 @@ DEPENDENCIES
   bootstrap_form
   counter_culture
   devise
+  factory_girl_rails
+  faker
   font-awesome-rails
   friendly_id
   geocoder
@@ -370,6 +381,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails
   sdoc
+  shoulda-matchers
   slim-rails
   spring
   sprockets
