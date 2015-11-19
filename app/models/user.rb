@@ -24,7 +24,7 @@
 #  unconfirmed_email      :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  real_name              :string           not null
+#  name                   :string           not null
 #  admin                  :boolean          default("false"), not null
 #  slug                   :string           not null
 #
@@ -32,7 +32,7 @@
 class User < ActiveRecord::Base
   extend FriendlyId
   include PgSearch
-  friendly_id :real_name, use: :slugged
+  friendly_id :name, use: :slugged
   has_many :participant, dependent: :destroy
 
   has_attached_file :avatar,
@@ -45,11 +45,11 @@ class User < ActiveRecord::Base
 
   devise :confirmable, :database_authenticatable, :registerable, :recoverable,
     :rememberable, :trackable, :validatable
-  pg_search_scope :search_by_name, against: :real_name
+  pg_search_scope :search_by_name, against: :name
 
   rails_admin do
     list do
-      field :real_name
+      field :name
       field :email
       include_all_fields
       exclude_fields :encrypted_password, :reset_password_token,

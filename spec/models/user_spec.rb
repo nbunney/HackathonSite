@@ -24,7 +24,7 @@
 #  unconfirmed_email      :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  real_name              :string           not null
+#  name                   :string           not null
 #  admin                  :boolean          default("false"), not null
 #  slug                   :string           not null
 #
