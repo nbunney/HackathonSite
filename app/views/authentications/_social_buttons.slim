@@ -1,0 +1,15 @@
+- if auth
+  .btn-oauth.btn-twitter.btn-block Signing in with #{auth['service']}
+- else
+  a.btn.btn-oauth.btn-twitter> href=authentication_path('twitter')
+    => fa_icon 'twitter'
+    | Twitter
+  a.btn.btn-oauth.btn-facebook> href=authentication_path('facebook')
+    => fa_icon 'facebook'
+    | Facebook
+  a.btn.btn-oauth.btn-github> href=authentication_path('github')
+    => fa_icon 'github'
+    | Github
+  a.btn.btn-oauth.btn-google> href=authentication_path('google_oauth2')
+    => fa_icon 'google'
+    | Google
