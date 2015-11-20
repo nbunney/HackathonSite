@@ -1,6 +1,6 @@
 - wide ||= false
 div class="event-block #{'event-block-wide' if wide}" style="background-image: url('#{event.image.url(:display)}')"
-  a.overlay-link href=event_url(event)
+  a.overlay-link href=event_path(event)
   span.inner
     h2
       = event.name
