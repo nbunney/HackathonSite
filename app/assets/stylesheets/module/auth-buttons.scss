@@ -1,0 +1,22 @@
+.btn-oauth {
+  padding: 2px 8px;
+  padding-top: calc(3px + .2em);
+  font-size: 0.9em;
+  margin: 5px 1px;
+}
+.btn-oauth.btn-facebook {
+  background-color: #3B5998;
+  color: #F7F7F7;
+}
+.btn-oauth.btn-twitter {
+  background-color: #4099FF;
+  color: #F7F7F7;
+}
+.btn-oauth.btn-github {
+  background-color: #F5F5F5;
+  color: #000000;
+}
+.btn-oauth.btn-google {
+  background-color: #4285F4;
+  color: white;
+}
