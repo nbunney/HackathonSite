@@ -56,6 +56,7 @@ end
 gem 'sdoc', group: :doc
 
 group :development, :test do
+  gem 'dotenv-rails' # Load .env data
   gem 'rack-mini-profiler' # Profile the app
   gem 'pry-rails' # Better Console
   gem 'spring' # Faster CLI
