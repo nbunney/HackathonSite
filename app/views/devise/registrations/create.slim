@@ -1,0 +1,5 @@
+.col-sm-4.col-sm-offset-4
+  h2 Welcome to the Valley Hackathon
+  p Please check your email to confirm your address
+  - if @next_event
+    = render 'event_block', event: @next_event
