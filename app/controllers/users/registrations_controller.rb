@@ -11,7 +11,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     event = params.delete(:event)
     super do |user|
       if user.persisted?
-        Participant.new(user: user, event: event)
+        @participant = Participant.new(user: user, event: event)
         authorize @participant
         @participant.save!
       end

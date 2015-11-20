@@ -19,6 +19,13 @@ Rails.application.routes.draw do
   }
   resources :users
 
+  # Omniauth
+  resources :authentications do
+    member do
+      get 'callback' => 'authentications#create'
+    end
+  end
+
   # Events
   resources :events do
     # Polls represent a round of voting with a set of participants
