@@ -4,16 +4,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def new
     @event = params.delete(:event)
+    @auth = session['prefill_signup']['auth'] if session['prefill_signup']
+    session.delete('prefill_signup')
     super
   end
 
   def create
     event = params.delete(:event)
     super do |user|
-      if event && user.persisted?
-        @participant = Participant.new(user: user, event: event)
-        authorize @participant
-        @participant.save!
+      if user.persisted?
+        if event
+          @participant = Participant.new(user: user, event: event)
+          authorize @participant
+          @participant.save!
+        end
       end
     end
   end

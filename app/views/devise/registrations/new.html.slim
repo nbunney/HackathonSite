@@ -6,6 +6,8 @@
   .row: .col-sm-offset-3.col-sm-9: h2 Create an account
   = render 'flash'
   = f.hidden_field :event, value: @event if @event
+  .row: .col-sm-offset-3.col-sm-9
+    = render 'authentications/social_buttons'
   .field= f.email_field :email, autofocus: true
   .field= f.text_field :name
   .field= f.password_field :password

@@ -34,6 +34,7 @@ class User < ActiveRecord::Base
   include PgSearch
   friendly_id :name, use: :slugged
   has_many :participant, dependent: :destroy
+  has_many :authentication, dependent: :destroy
 
   has_attached_file :avatar,
     styles: { medium: '300x300#', thumb: '100x100#' },
@@ -54,6 +55,18 @@ class User < ActiveRecord::Base
       include_all_fields
       exclude_fields :encrypted_password, :reset_password_token,
                      :confirmation_token
+    end
+  end
+
+  def self.new_with_session(params, session)
+    if session['prefill_signup']
+      prefill = session['prefill_signup']['user']
+      new(
+        name: prefill['name'],
+        email: prefill['email']
+      )
+    else
+      super
     end
   end
 end

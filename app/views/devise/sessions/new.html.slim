@@ -5,20 +5,8 @@
                                control_col: 'col-sm-9') do |f|
   .row: .col-sm-offset-3.col-sm-9: h2 Sign in
   = render 'flash'
-  .row
-    .col-sm-offset-3.col-sm-9
-      a.btn.btn-oauth.btn-twitter> href='/auth/twitter'
-        => fa_icon 'twitter'
-        | Twitter
-      a.btn.btn-oauth.btn-facebook> href='/auth/facebook'
-        => fa_icon 'facebook'
-        | Facebook
-      a.btn.btn-oauth.btn-github> href='/auth/github'
-        => fa_icon 'github'
-        | Github
-      a.btn.btn-oauth.btn-google> href='/auth/google_oauth2'
-        => fa_icon 'google'
-        | Google
+  .row: .col-sm-offset-3.col-sm-9
+    = render 'authentications/social_buttons'
   .field= f.email_field :email, autofocus: true
   .field= f.password_field :password
   .row: .col-sm-offset-3.col-sm-9
