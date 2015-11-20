@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151119032041) do
+ActiveRecord::Schema.define(version: 20151120002500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "authentications", force: :cascade do |t|
+    t.integer  "service",    null: false
+    t.string   "uid",        null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "authentications", ["service", "uid"], name: "index_authentications_on_service_and_uid", unique: true, using: :btree
+  add_index "authentications", ["service", "user_id"], name: "index_authentications_on_service_and_user_id", unique: true, using: :btree
+  add_index "authentications", ["user_id"], name: "index_authentications_on_user_id", using: :btree
 
   create_table "companies", force: :cascade do |t|
     t.string   "name",                           null: false
@@ -196,6 +208,7 @@ ActiveRecord::Schema.define(version: 20151119032041) do
     t.datetime "updated_at",                 null: false
   end
 
+  add_foreign_key "authentications", "users"
   add_foreign_key "events", "locations"
   add_foreign_key "participants", "events"
   add_foreign_key "participants", "teams"
