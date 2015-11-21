@@ -101,4 +101,7 @@ Rails.application.configure do
   }
 
 	config.action_mailer.default_url_options = { host: 'valleyhackathon.com' }
+
+  # For some reason Heroku terminates SSL but doesn't seem to tell us
+  OmniAuth.config.full_host = 'https://valleyhackathon.com'
 end
