@@ -1,6 +1,6 @@
 - auth ||= nil
 - if auth
-  - service = Authentication::SERVICE_MAPPING[auth['service']]
+  - service = Authentication::SERVICE_MAPPINGS[auth['service']]
   div class="btn btn-oauth btn-block btn-#{service}"
     | Signing in with #{service}
 - else
