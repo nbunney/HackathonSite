@@ -11,6 +11,13 @@
 #
 
 class Authentication < ActiveRecord::Base
+  SERVICE_MAPPINGS = {
+    'github' => 'github',
+    'twitter' => 'twitter',
+    'facebook' => 'facebook',
+    'google_oauth2' => 'google'
+  }
+
   belongs_to :user
 
   enum service: %i[github twitter facebook google]

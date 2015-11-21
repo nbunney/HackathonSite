@@ -1,6 +1,8 @@
 - auth ||= nil
 - if auth
-  .btn-oauth.btn-twitter.btn-block Signing in with #{auth['service']}
+  - service = Authentication::SERVICE_MAPPING[auth['service']]
+  div class="btn btn-oauth btn-block btn-#{service}"
+    | Signing in with #{service}
 - else
   a.btn.btn-oauth.btn-twitter> href=authentication_path('twitter')
     => fa_icon 'twitter'
