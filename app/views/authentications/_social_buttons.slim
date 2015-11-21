@@ -1,7 +1,7 @@
 - auth ||= nil
 - if auth
   - service = Authentication::SERVICE_MAPPINGS[auth['service']]
-  =link_to :reload, class: "btn btn-oauth btn-block btn-#{service}" do
+  =link_to 'javascript:window.reload()', class: "btn btn-oauth btn-block btn-#{service}" do
     | Signing in with #{service}
 - else
   a.btn.btn-oauth.btn-twitter> href=authentication_path('twitter')
