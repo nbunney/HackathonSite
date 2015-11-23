@@ -1,5 +1,5 @@
 / We misspell "sponsor" intentionally to avoid triggering AdBlock
 div class="col-sm-#{12 / tier.columns} sponser"
   a href=company.url
-    =image_tag company.logo, class: 'sponser-logo', alt: company.name
+    =image_tag company.logo, class: 'sponser-logo', alt: company.name, style: "max-height: #{tier.max_height}px"
   p=company.description

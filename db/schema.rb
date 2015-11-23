@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151120002500) do
+ActiveRecord::Schema.define(version: 20151123231050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(version: 20151120002500) do
     t.datetime "updated_at",                 null: false
     t.integer  "columns",    default: 4,     null: false
     t.boolean  "featured",   default: false, null: false
+    t.integer  "max_height", default: 100,   null: false
   end
 
   add_index "sponsorship_tiers", ["event_id", "name"], name: "index_sponsorship_tiers_on_event_id_and_name", unique: true, using: :btree

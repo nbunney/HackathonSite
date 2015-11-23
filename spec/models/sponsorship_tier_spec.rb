@@ -12,6 +12,7 @@
 #  updated_at :datetime         not null
 #  columns    :integer          default("4"), not null
 #  featured   :boolean          default("false"), not null
+#  max_height :integer          default("100"), not null
 #
 
 require 'rails_helper'
