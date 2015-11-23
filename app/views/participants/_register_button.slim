@@ -1,8 +1,8 @@
 - participant = event.participant(current_user)
 - if user_signed_in?
   = react_component('RegisterButton', participant: participant.try(:id),
-                                      createAction: event_participants_url(event),
-                                      destroyAction: event_participant_url(event, ':participant_id'))
+                                      createAction: event_participants_path(event),
+                                      destroyAction: event_participant_path(event, ':participant_id'))
 - else
   a.btn.btn-primary.registration-btn href=new_user_registration_path(event: event.slug)
     | Register
