@@ -42,6 +42,7 @@ class SponsorshipTier < ActiveRecord::Base
       field :color, :color
       field :details, :serialized
       field :columns
+      field :max_height
       field :featured
       field :companies
     end
