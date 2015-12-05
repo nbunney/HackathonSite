@@ -12,18 +12,18 @@ class AuthenticationsController < ApplicationController
     elsif authentication = find_auth
       sign_in! authentication.user
     else
-      session[:prefill_signup] = signup_info
+      session['prefill_signup'] = signup_info
       redirect_to new_user_registration_path
     end
   end
 
   private
   def find_auth
-    Authentication.where(service: auth[:provider], uid: auth[:uid]).first
+    @auth ||= Authentication.where(service: auth[:provider], uid: auth[:uid]).first
   end
 
   def auth
-    request.env['omniauth.auth']
+    @omniauth ||= request.env['omniauth.auth']
   end
 
   def signup_info
