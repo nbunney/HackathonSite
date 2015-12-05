@@ -5,8 +5,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def new
     @event = params.delete(:event)
     @auth = session['prefill_signup']['auth'] if session['prefill_signup']
-    session.delete('prefill_signup')
     super
+    session.delete('prefill_signup')
   end
 
   def create
