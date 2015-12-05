@@ -8,7 +8,7 @@ class AuthenticationsController < ApplicationController
         uid: auth[:uid],
         user: current_user
       )
-      redirect_to :home, notice: "An account at #{auth[:provider]} has been linked to your account"
+      redirect_to '/', notice: "An account at #{auth[:provider]} has been linked to your account"
     elsif authentication = find_auth
       sign_in! authentication.user
     else
